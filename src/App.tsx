@@ -579,8 +579,8 @@ export default function App() {
     setActivities((prev) => [item, ...prev]);
     setSelectedTransaction(item);
     showPrestigeNotification({
-      title: notificationType === "ticket" ? "Ticket Authorized" : amount > 0 ? "Refund Completed" : "Booking Confirmed",
-      subtitle: `${title}${isPaidBooking ? ` • PKR ${Math.abs(amount).toLocaleString()} deducted` : ""}`,
+      title: notificationType === "ticket" ? "Ticket Authorized" : typeof amount === "number" && amount > 0 ? "Refund Completed" : "Booking Confirmed",
+      subtitle: `${title}${isPaidBooking && typeof amount === "number" ? ` • PKR ${Math.abs(amount).toLocaleString()} deducted` : ""}`,
       type: notificationType,
       actionLabel: "View Activity",
       relatedActivityId: item.id,
@@ -798,7 +798,8 @@ export default function App() {
     }, 1500);
   };
 
-  const handleServiceAction = (title: string, category: string, icon: LucideIcon) => {
+  const handleServiceAction = (title: string, category: string, _icon: LucideIcon) => {
+    void _icon;
     setActiveTab("assist");
     
     let message = `I need assistance with ${title}`;
