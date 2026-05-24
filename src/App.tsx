@@ -1065,7 +1065,7 @@ export default function App() {
       )}
 
       {showAddCardModal && (
-        <div className="fixed inset-0 z-[600] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-2xl" onClick={() => setShowAddCardModal(false)}>
+        <div className="fixed inset-0 z-[600] flex items-start justify-center overflow-y-auto px-4 py-6 sm:items-center sm:p-6 bg-black/60 backdrop-blur-2xl" onClick={() => setShowAddCardModal(false)}>
           <div className={`m-auto w-full max-w-sm rounded-[2.25rem] p-6 sm:p-7 glass-panel anim-slide-up max-h-[82dvh] overflow-y-auto scrollbar-hide shadow-[0_40px_100px_rgba(0,0,0,0.6)] ${theme.glow}`} onClick={(e) => e.stopPropagation()}>
             <div className="mb-5 flex items-center justify-between">
               <div>
@@ -1149,7 +1149,7 @@ export default function App() {
 
       {showProfileModal && (
         <div className="fixed inset-0 z-[500] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-2xl transition-all" onClick={() => { if (!isAuthenticatingKey) setShowProfileModal(false); }}>
-          <div className={`relative m-auto w-full max-w-sm overflow-hidden rounded-[2.35rem] p-6 sm:p-7 text-center glass-panel anim-pop-in max-h-[82dvh] overflow-y-auto scrollbar-hide shadow-[0_40px_100px_rgba(0,0,0,0.6)] ${theme.glow}`} onClick={(e) => e.stopPropagation()}>
+          <div className={`relative m-auto w-full max-w-sm overflow-hidden rounded-[2.35rem] p-6 sm:p-7 text-centerclassName="fixed inset-0 z-[500] flex items-start justify-center overflow-y-auto px-4 py-6 sm:items-center sm:p-6 bg-black/60 backdrop-blur-2xl transition-all" glass-panel anim-pop-in max-h-[calc(100dvh-3rem)] overflow-y-auto scrollbar-hide shadow-[0_40px_100px_rgba(0,0,0,0.6)] ${theme.glow}`} onClick={(e) => e.stopPropagation()}>
             <button onClick={() => setShowProfileModal(false)} className="absolute right-5 top-5 grid h-10 w-10 place-items-center rounded-full bg-white/[0.08] text-white/45 transition hover:bg-white/[0.13] hover:text-white"><X size={18} /></button>
             <div className={`absolute -left-16 -top-16 h-40 w-40 rounded-full blur-[3rem] opacity-30 pointer-events-none ${isUltra ? "bg-[#ffd98a]" : "bg-white"}`} />
             <div className={`absolute -bottom-16 -right-16 h-40 w-40 rounded-full blur-[3rem] opacity-20 pointer-events-none ${isUltra ? "bg-[#ffd98a]" : "bg-white"}`} />
@@ -1228,8 +1228,8 @@ export default function App() {
       )}
 
       {/* Main App Container */}
-      <div className="relative z-10 flex min-h-[100dvh] w-full max-w-5xl flex-col">
-        <header className="z-20 flex items-center justify-between px-4 pb-4 pt-6 sm:px-5 sm:pt-7 md:px-10 md:pt-9">
+      <div className="relative z-10 flex min-h-[100dvh] w-full max-w-[1600px] flex-col xl:px-6 2xl:px-10">
+        <header className="z-20 flex items-center justify-between px-4 pb-4 pt-5 sm:px-6 sm:pt-6 lg:px-10 xl:px-14 xl:pt-8">
           <div className="flex cursor-pointer items-center gap-3.5 group" onClick={() => setShowProfileModal(true)}>
             <div className={`grid h-12 w-12 place-items-center rounded-[1.25rem] ${theme.iconBg}`}>
               <User size={20} className={isUltra ? "text-[#ffd98a]" : "text-white/76"} />
@@ -1264,10 +1264,10 @@ export default function App() {
           </div>
         </header>
 
-        <main className="z-10 flex flex-1 flex-col overflow-y-auto px-4 pb-32 sm:px-5 sm:pb-36 md:px-10 scrollbar-hide">
+        <main className="z-10 flex flex-1 flex-col overflow-y-auto px-4 pb-28 sm:px-6 sm:pb-32 lg:px-10 xl:px-14 xl:pb-36 scrollbar-hide">
           <div key={activeTab} className="anim-pop-in flex flex-1 flex-col h-full min-h-0">
             {activeTab === "home" && (
-              <div className="space-y-5 md:space-y-7 h-full">
+              <div className="mx-auto w-full max-w-[1400px] space-y-5 md:space-y-7 h-full">
                 <section onClick={() => showPrestigeNotification({ title: "Plan Active", subtitle: `Wallet Balance ${formatBalance()}`, type: "plan", actionLabel: "View Plan" })} className={`relative overflow-hidden p-6 md:p-8 ${theme.card} ${theme.glow} anim-slide-up cursor-pointer`}>
                 <div className="relative flex flex-col sm:flex-row items-start justify-between gap-4"><div><div className="mb-3 flex items-center gap-2"><p className="text-[12px] font-bold text-white/48">Persona Wallet Balance</p><button onClick={(e) => { e.stopPropagation(); setIsDiscrete(!isDiscrete); }} className="grid h-8 w-8 place-items-center rounded-full bg-white/[0.08] text-white/55 transition hover:bg-white/[0.12] hover:text-white">{isDiscrete ? <EyeOff size={14} /> : <Eye size={14} />}</button></div><h3 className="text-[36px] sm:text-[42px] font-bold tracking-[-0.055em] md:text-[56px] truncate max-w-[250px] sm:max-w-none">{formatBalance()}</h3><div className="mt-4 sm:mt-5 flex items-center gap-3"><span className="rounded-full border border-emerald-300/20 bg-emerald-400/[0.12] px-3 py-1.5 text-[11px] font-black text-emerald-300">Active</span><span className="text-[11px] sm:text-[12px] font-semibold text-white/38">Bookings deduct PKR {PLAN_PRICE.toLocaleString()}</span></div></div><div className={`hidden sm:grid h-16 w-16 shrink-0 place-items-center rounded-[1.55rem] ${theme.iconBg} anim-float`}><Diamond size={30} /></div></div>
               </section>
@@ -1548,13 +1548,13 @@ export default function App() {
     </div>
   </main>
 
-        <nav className="fixed bottom-4 sm:bottom-6 left-1/2 z-50 flex h-[4.5rem] sm:h-[4.75rem] w-[92%] max-w-[24rem] sm:max-w-md -translate-x-1/2 items-center justify-evenly gap-1 rounded-[2.25rem] border border-white/[0.15] bg-[#09090e]/85 p-1.5 shadow-[0_32px_90px_rgba(0,0,0,.65)] backdrop-blur-3xl">
+        <nav className="fixed bottom-3 left-1/2 z-50 flex h-[4.25rem] w-[94%] max-w-[24rem] -translate-x-1/2 items-center justify-evenly gap-1 rounded-[2rem] border border-white/[0.15] bg-[#09090e]/90 p-1.5 shadow-[0_24px_70px_rgba(0,0,0,.55)] backdrop-blur-3xl sm:bottom-5 sm:h-[4.6rem] sm:max-w-md lg:bottom-6 lg:max-w-2xl lg:rounded-[2.35rem] lg:px-4 xl:max-w-3xl">
           {[{ id: "home", label: "Home", icon: LayoutGrid }, { id: "services", label: "Plan", icon: CreditCard }, { id: "assist", label: "Assist", icon: MessageSquare }, { id: "nearby", label: "Nearby", icon: MapPin }, { id: "activity", label: "Log", icon: ActivityIcon }].map((item) => { 
             const active = activeTab === item.id; 
             
             if (item.id === "assist") {
               return (
-                <button key={item.id} onClick={() => setActiveTab("assist")} className={`relative z-10 grid h-[3.8rem] w-[3.8rem] sm:h-[4.2rem] sm:w-[4.2rem] shrink-0 place-items-center rounded-[1.65rem] transition duration-300 active:scale-95 ${activeTab === "assist" ? `${theme.btn} scale-[1.03]` : "bg-white/[0.10] text-white/70 border border-white/[0.08]"}`}>
+                <button key={item.id} onClick={() => setActiveTab("assist")} className={`relative z-10 grid h-[3.7rem] w-[3.7rem] sm:h-[4.1rem] sm:w-[4.1rem] lg:h-[3.6rem] lg:w-[6.5rem] shrink-0 place-items-center rounded-[1.65rem] transition duration-300 active:scale-95 ${activeTab === "assist" ? `${theme.btn} scale-[1.03]` : "bg-white/[0.10] text-white/70 border border-white/[0.08]"}`}>
                   <MessageSquare size={22} />
                   {activeTab !== "assist" && <span className={`absolute right-3.5 top-3.5 h-2 w-2 rounded-full ${isUltra ? "bg-[#ffd98a]" : "bg-white"}`} />}
                 </button>
@@ -1562,10 +1562,10 @@ export default function App() {
             }
 
             return (
-              <button key={item.id} onClick={() => setActiveTab(item.id)} className={`relative flex min-w-[4rem] flex-col items-center justify-center gap-1.5 rounded-[1.4rem] px-1 py-2.5 transition-all duration-300 ${active ? "bg-white/[0.12] text-white scale-[1.03]" : "text-white/34 hover:text-white/72"}`}>
+              <button key={item.id} onClick={() => setActiveTab(item.id)} className={`relative flex min-w-[3.6rem] sm:min-w-[4rem] lg:min-w-[6.5rem] flex-col lg:flex-row items-center justify-center gap-1.5 lg:gap-2 rounded-[1.4rem] px-1 lg:px-4 py-2.5 transition-all duration-300 ${active ? "bg-white/[0.12] text-white scale-[1.03]" : "text-white/34 hover:text-white/72"}`}>
                 {React.createElement(item.icon, { size: 20 })}
                 {item.id === "activity" && unreadNotifications > 0 && <span className="absolute right-3 top-1.5 h-2 w-2 rounded-full bg-[#ffd98a]" />}
-                <span className="text-[9px] font-black uppercase tracking-wider">{item.label}</span>
+                <span className="text-[9px] lg:text-[11px] font-black uppercase tracking-wider">{item.label}</span>
               </button>
             ); 
           })}
