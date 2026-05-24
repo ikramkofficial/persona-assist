@@ -854,7 +854,6 @@ export default function App() {
     : "No card linked";
 
   const currentHomeCards = [
-    { title: "Wallet Balance", value: isDiscrete ? "PKR ***,***" : `PKR ${walletBalance.toLocaleString()}`, icon: CreditCard },
     { title: "Membership", value: isUltra ? "Persona Ultra" : "Persona Basic", icon: Crown },
     { title: "Linked Card", value: cardNumber, icon: CreditCard },
     { title: "Active City", value: currentCity, icon: MapPin },
@@ -869,16 +868,108 @@ export default function App() {
     return (
       <div className="relative flex h-[100dvh] overflow-hidden bg-[#09090f] p-4 text-white">
         <style>{`
-          .font-ios { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, Segoe UI, sans-serif; }
-          .font-luxury { font-family: Georgia, "Times New Roman", serif; }
-          .glass-panel {
-            background: linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.055));
-            border: 1px solid rgba(255,255,255,.14);
-            box-shadow: 0 30px 90px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.10);
-            backdrop-filter: blur(34px);
-          }
-        `}</style>
+  .font-ios {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, Segoe UI, sans-serif;
+  }
 
+  .font-luxury {
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  .glass-panel {
+    background: linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.055));
+    border: 1px solid rgba(255,255,255,.14);
+    box-shadow: 0 30px 90px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.10);
+    backdrop-filter: blur(34px);
+    -webkit-backdrop-filter: blur(34px);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  @keyframes iosNavFloat {
+    0%, 100% {
+      transform: translate(-50%, 0);
+    }
+    50% {
+      transform: translate(-50%, -4px);
+    }
+  }
+
+  @keyframes softAppear {
+    from {
+      opacity: 0;
+      transform: translateY(14px) scale(.98);
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes glassPulse {
+    0%, 100% {
+      opacity: .72;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.02);
+    }
+  }
+
+  @keyframes notificationDrop {
+    from {
+      opacity: 0;
+      transform: translateY(-18px) scale(.96);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes cardLift {
+    from {
+      opacity: 0;
+      transform: translateY(18px) scale(.985);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .ios-nav-float {
+    animation: iosNavFloat 5.5s ease-in-out infinite;
+  }
+
+  .soft-appear {
+    animation: softAppear .55s cubic-bezier(.22, 1, .36, 1) both;
+  }
+
+  .glass-pulse {
+    animation: glassPulse 4.5s ease-in-out infinite;
+  }
+
+  .notification-drop {
+    animation: notificationDrop .45s cubic-bezier(.22, 1, .36, 1) both;
+  }
+
+  .card-lift {
+    animation: cardLift .5s cubic-bezier(.22, 1, .36, 1) both;
+  }
+`}</style>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.14),transparent_28%),radial-gradient(circle_at_80%_15%,rgba(132,103,255,0.22),transparent_32%),radial-gradient(circle_at_50%_100%,rgba(255,217,138,0.16),transparent_35%)]" />
 
         {activeNotification && (
@@ -962,17 +1053,108 @@ export default function App() {
   return (
     <div className="relative h-[100dvh] overflow-hidden bg-[#080910] text-white">
       <style>{`
-        .font-ios { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, Segoe UI, sans-serif; }
-        .font-luxury { font-family: Georgia, "Times New Roman", serif; }
-        .glass-panel {
-          background: linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.055));
-          border: 1px solid rgba(255,255,255,.13);
-          box-shadow: 0 24px 80px rgba(0,0,0,.36), inset 0 1px 0 rgba(255,255,255,.10);
-          backdrop-filter: blur(34px);
-        }
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
+  .font-ios {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, Segoe UI, sans-serif;
+  }
+
+  .font-luxury {
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  .glass-panel {
+    background: linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.055));
+    border: 1px solid rgba(255,255,255,.14);
+    box-shadow: 0 30px 90px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.10);
+    backdrop-filter: blur(34px);
+    -webkit-backdrop-filter: blur(34px);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  @keyframes iosNavFloat {
+    0%, 100% {
+      transform: translate(-50%, 0);
+    }
+    50% {
+      transform: translate(-50%, -4px);
+    }
+  }
+
+  @keyframes softAppear {
+    from {
+      opacity: 0;
+      transform: translateY(14px) scale(.98);
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes glassPulse {
+    0%, 100% {
+      opacity: .72;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.02);
+    }
+  }
+
+  @keyframes notificationDrop {
+    from {
+      opacity: 0;
+      transform: translateY(-18px) scale(.96);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes cardLift {
+    from {
+      opacity: 0;
+      transform: translateY(18px) scale(.985);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .ios-nav-float {
+    animation: iosNavFloat 5.5s ease-in-out infinite;
+  }
+
+  .soft-appear {
+    animation: softAppear .55s cubic-bezier(.22, 1, .36, 1) both;
+  }
+
+  .glass-pulse {
+    animation: glassPulse 4.5s ease-in-out infinite;
+  }
+
+  .notification-drop {
+    animation: notificationDrop .45s cubic-bezier(.22, 1, .36, 1) both;
+  }
+
+  .card-lift {
+    animation: cardLift .5s cubic-bezier(.22, 1, .36, 1) both;
+  }
+`}</style>
 
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.10),transparent_26%),radial-gradient(circle_at_85%_15%,rgba(117,93,255,0.20),transparent_30%),radial-gradient(circle_at_50%_105%,rgba(255,217,138,0.14),transparent_36%)]" />
 
@@ -1021,32 +1203,83 @@ export default function App() {
           </div>
         </header>
 
-        <main className="min-h-0 flex-1 overflow-hidden px-4 pb-[5.8rem] sm:px-6 lg:px-10 xl:px-14">
+        <main className="min-h-0 flex-1 overflow-y-auto px-4 pb-24 sm:px-6 sm:pb-28 lg:px-10 lg:pb-32 xl:px-14 scrollbar-hide scroll-smooth">
           {activeTab === "home" && (
-            <section className="flex h-full min-h-0 flex-col">
-              <div className="mb-4 shrink-0 rounded-[2rem] border border-white/[0.12] bg-white/[0.08] p-5 backdrop-blur-2xl lg:p-7">
-                <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-                  <div>
-                    <p className="text-[11px] font-black uppercase tracking-[0.26em] text-white/40">Private Concierge</p>
-                    <h2 className="mt-2 text-[28px] font-black tracking-[-0.05em] sm:text-[38px] lg:text-[48px]">
-                      Welcome, {currentUser?.name || "Member"}
-                    </h2>
-                    <p className="mt-2 max-w-2xl text-[13px] font-semibold leading-relaxed text-white/48">
-                      Manage wallet, bookings, Ultra services, activity, and Persona Assist from one premium dashboard.
-                    </p>
-                  </div>
+            <section className="soft-appear flex min-h-full flex-col gap-4">
+              <div className="relative mb-4 shrink-0 overflow-hidden rounded-[2.2rem] border border-white/[0.14] bg-[linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.055))] p-6 shadow-[0_30px_90px_rgba(0,0,0,.42)] backdrop-blur-3xl">
+  <div className="pointer-events-none absolute -right-20 -top-20 h-52 w-52 rounded-full bg-[#ffd98a]/20 blur-[4rem]" />
+  <div className="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-white/10 blur-[4rem]" />
 
-                  <button
-                    type="button"
-                    onClick={handleToggleUltra}
-                    className={`rounded-[1.3rem] px-5 py-3 text-[12px] font-black uppercase tracking-[0.16em] ${isUltra ? theme.btn : "border border-white/[0.12] bg-white/[0.08] text-white/70"}`}
-                  >
-                    {isUltra ? "Ultra Active" : "Enable Ultra"}
-                  </button>
-                </div>
-              </div>
+  <div className="relative z-10 flex items-start justify-between gap-4">
+    <div>
+      <p className="text-[10px] font-black uppercase tracking-[0.28em] text-white/42">Persona Wallet</p>
+      <h3 className="mt-3 text-[34px] font-black tracking-[-0.06em] sm:text-[44px]">
+        {isDiscrete ? "PKR ***,***" : `PKR ${walletBalance.toLocaleString()}`}
+      </h3>
+      <p className="mt-2 text-[12px] font-semibold text-white/45">
+        Available premium service balance
+      </p>
+    </div>
 
-              <div className="grid min-h-0 flex-1 grid-cols-1 gap-3 overflow-hidden sm:grid-cols-2 lg:grid-cols-3">
+    <div className={`grid h-14 w-14 shrink-0 place-items-center rounded-[1.4rem] ${isUltra ? "bg-[#ffd98a]/15 text-[#ffd98a]" : "bg-white/[0.10] text-white"}`}>
+      <CreditCard size={24} />
+    </div>
+  </div>
+
+  <div className="relative z-10 mt-7 rounded-[1.7rem] border border-white/[0.10] bg-black/20 p-4">
+    <div className="flex items-center justify-between gap-4">
+      <div className="min-w-0">
+        <p className="text-[10px] font-black uppercase tracking-[0.22em] text-white/35">Linked Card</p>
+        <p className="mt-2 truncate text-[15px] font-black">{cardNumber}</p>
+      </div>
+
+      <button
+        type="button"
+        onClick={() => setShowCardDetails((prev) => !prev)}
+        className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/[0.10] text-white/70"
+      >
+        {showCardDetails ? <EyeOff size={16} /> : <Eye size={16} />}
+      </button>
+    </div>
+
+    <div className="mt-4 grid grid-cols-3 gap-2">
+      <div className="rounded-[1.1rem] bg-white/[0.07] p-3">
+        <p className="text-[9px] font-black uppercase tracking-[0.18em] text-white/30">Plan</p>
+        <p className="mt-1 text-[12px] font-black">{isUltra ? "Ultra" : "Basic"}</p>
+      </div>
+
+      <div className="rounded-[1.1rem] bg-white/[0.07] p-3">
+        <p className="text-[9px] font-black uppercase tracking-[0.18em] text-white/30">Cost</p>
+        <p className="mt-1 text-[12px] font-black">PKR {PLAN_PRICE.toLocaleString()}</p>
+      </div>
+
+      <div className="rounded-[1.1rem] bg-white/[0.07] p-3">
+        <p className="text-[9px] font-black uppercase tracking-[0.18em] text-white/30">Status</p>
+        <p className="mt-1 text-[12px] font-black">Active</p>
+      </div>
+    </div>
+  </div>
+
+  <div className="relative z-10 mt-4 flex gap-2">
+    <button
+      type="button"
+      onClick={() => setShowAddCardModal(true)}
+      className="flex-1 rounded-[1.2rem] bg-white/[0.10] py-3 text-[11px] font-black uppercase tracking-[0.16em] text-white/70"
+    >
+      Add Card
+    </button>
+
+    <button
+      type="button"
+      onClick={handleToggleUltra}
+      className={`flex-1 rounded-[1.2rem] py-3 text-[11px] font-black uppercase tracking-[0.16em] ${isUltra ? theme.btn : "bg-white/[0.10] text-white/70"}`}
+    >
+      {isUltra ? "Ultra Active" : "Enable Ultra"}
+    </button>
+  </div>
+</div>
+
+             <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
                 {getPagedItems(currentHomeCards).map((card) => {
                   const Icon = card.icon;
 
@@ -1350,8 +1583,8 @@ export default function App() {
             </section>
           )}
         </main>
-
-        <nav className="fixed bottom-5 left-1/2 z-50 flex h-[4.25rem] w-[92%] max-w-[24rem] -translate-x-1/2 items-center justify-evenly gap-1 rounded-[2rem] border border-white/[0.15] bg-[#09090e]/92 p-1.5 shadow-[0_24px_70px_rgba(0,0,0,.55)] backdrop-blur-3xl sm:bottom-6 sm:h-[4.5rem] sm:max-w-md lg:bottom-7 lg:max-w-2xl lg:px-4 xl:max-w-3xl">
+            <div className="pointer-events-none fixed bottom-0 left-0 right-0 z-40 h-32 bg-gradient-to-t from-[#080910]/80 via-[#080910]/20 to-transparent" />
+        <nav className="ios-nav-float fixed bottom-5 left-1/2 z-50 flex h-[4.35rem] w-[92%] max-w-[24rem] -translate-x-1/2 items-center justify-evenly gap-1 rounded-[2.15rem] border border-white/[0.18] bg-[#09090e]/55 p-1.5 shadow-[0_18px_55px_rgba(0,0,0,.45),inset_0_1px_0_rgba(255,255,255,.10)] backdrop-blur-[28px] backdrop-saturate-150 transition-all duration-500 ease-out sm:bottom-6 sm:h-[4.55rem] sm:max-w-md lg:bottom-7 lg:max-w-2xl lg:px-4 xl:max-w-3xl">
           {tabItems.slice(0, 2).map((item) => {
             const Icon = item.icon;
             const active = activeTab === item.id;
