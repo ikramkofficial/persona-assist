@@ -309,7 +309,7 @@ export default function App() {
   const [activities, setActivities] = useState<ActivityItem[]>([
     {
       id: 1,
-      title: "Persona Persist Profile Created",
+      title: "Persona Assist Profile Created",
       type: "system",
       amount: null,
       date: "Today, 09:00",
@@ -351,7 +351,7 @@ export default function App() {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
     {
       id: 1,
-      text: "Welcome to Persona Persist. Persona Assist is online.",
+      text: "Welcome to Persona Assist. Persona Assist is online.",
       sender: "bot",
       type: "text",
     },
@@ -445,7 +445,7 @@ export default function App() {
   const removePrestigeCard = () => {
     setPrestigeCard(null);
     setShowCardDetails(false);
-    showPrestigeNotification({ title: "Card Removed", subtitle: "Persona Persist payment card has been removed", type: "warning" });
+    showPrestigeNotification({ title: "Card Removed", subtitle: "Persona Assist payment card has been removed", type: "warning" });
   };
 
   const handleCardInputChange = (field: "number" | "expiry" | "cvv", value: string) => {
@@ -687,7 +687,7 @@ export default function App() {
         setIsUltraSubscribed(false);
         setIsAuthenticated(true);
         setIsTransitioning(false);
-        showPrestigeNotification({ title: "Account Created", subtitle: "Persona Persist profile secured", type: "success" });
+        showPrestigeNotification({ title: "Account Created", subtitle: "Persona Assist profile secured", type: "success" });
         
         window.setTimeout(() => {
           setActiveTab("services");
@@ -947,13 +947,13 @@ export default function App() {
               <Sparkles size={25} className="text-white" strokeWidth={1.7} />
             </div>
             <h1 className="text-[46px] leading-none font-luxury tracking-[0.08em] text-white drop-shadow-sm">Persona</h1>
-            <p className="mt-3 text-[11px] uppercase tracking-[0.36em] text-white/52 font-semibold">Persist</p>
+            <p className="mt-3 text-[11px] uppercase tracking-[0.36em] text-white/52 font-semibold">Assist</p>
           </div>
 
           <form onSubmit={handleAuth} className="stagger-2 glass-panel rounded-[2.35rem] p-6 md:p-7 transition-all duration-500 ease-ios">
             <div className="mb-6 rounded-[1.65rem] bg-black/15 border border-white/[0.08] p-4">
               <p className="text-[12px] font-semibold text-white/78">Private PIN Access</p>
-              <p className="mt-1 text-[12px] leading-relaxed text-white/42">Enter your secure PIN to continue Persona Persist.</p>
+              <p className="mt-1 text-[12px] leading-relaxed text-white/42">Enter your secure PIN to continue Persona Assist.</p>
             </div>
             <div className="space-y-3.5">
               <div className={`overflow-hidden transition-all duration-500 ease-ios ${isSignUp ? "max-h-24 opacity-100" : "max-h-0 opacity-0"}`}>
@@ -1035,12 +1035,12 @@ export default function App() {
       )}
 
       {showNotificationCenter && (
-        <div className="fixed inset-0 z-[650] flex items-center justify-center bg-black/60 p-4 sm:p-6 backdrop-blur-2xl transition-all" onClick={() => setShowNotificationCenter(false)}>
-          <div className="m-auto w-full max-w-md rounded-[2.25rem] glass-panel p-5 sm:p-6 anim-pop-in max-h-[82dvh] flex flex-col shadow-[0_40px_100px_rgba(0,0,0,0.6)]" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[650] grid min-h-[100dvh] place-items-center overflow-y-auto bg-black/60 px-4 py-8 backdrop-blur-2xl transition-all sm:p-6" onClick={() => setShowNotificationCenter(false)}>
+          <div className="w-full max-w-[23rem] sm:max-w-md rounded-[2.25rem] glass-panel p-5 sm:p-6 anim-pop-in max-h-[82dvh] flex flex-col shadow-[0_40px_100px_rgba(0,0,0,0.6)]" onClick={(e) => e.stopPropagation()}>
             <div className="mb-5 flex shrink-0 items-center justify-between">
               <div>
                 <h3 className="text-[20px] sm:text-[22px] font-black tracking-[-0.04em]">Notification Center</h3>
-                <p className="text-[12px] font-semibold text-white/42">{notifications.length} latest Persona Persist updates</p>
+                <p className="text-[12px] font-semibold text-white/42">{notifications.length} latest Persona Assist updates</p>
               </div>
               <button onClick={() => { setNotifications([]); setUnreadNotifications(0); }} className="rounded-full bg-white/[0.08] px-3 py-2 text-[11px] font-bold text-white/60">Clear All</button>
             </div>
@@ -1065,8 +1065,8 @@ export default function App() {
       )}
 
       {showAddCardModal && (
-        <div className="fixed inset-0 z-[600] flex items-start justify-center overflow-y-auto px-4 py-6 sm:items-center sm:p-6 bg-black/60 backdrop-blur-2xl" onClick={() => setShowAddCardModal(false)}>
-          <div className={`m-auto w-full max-w-sm rounded-[2.25rem] p-6 sm:p-7 glass-panel anim-slide-up max-h-[82dvh] overflow-y-auto scrollbar-hide shadow-[0_40px_100px_rgba(0,0,0,0.6)] ${theme.glow}`} onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[600] grid min-h-[100dvh] place-items-center overflow-y-auto bg-black/60 px-4 py-8 backdrop-blur-2xl sm:p-6" onClick={() => setShowAddCardModal(false)}>
+          <div className={`w-full max-w-[22rem] sm:max-w-sm rounded-[2.25rem] p-6 sm:p-7 glass-panel anim-slide-up max-h-[82dvh] overflow-y-auto scrollbar-hide shadow-[0_40px_100px_rgba(0,0,0,0.6)] ${theme.glow}`} onClick={(e) => e.stopPropagation()}>
             <div className="mb-5 flex items-center justify-between">
               <div>
                 <h3 className="text-[20px] font-bold tracking-[-0.03em] text-white">Link Payment Card</h3>
@@ -1098,8 +1098,8 @@ export default function App() {
       )}
 
       {showUpgradeModal && (
-        <div className="fixed inset-0 z-[600] flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-2xl" onClick={() => setShowUpgradeModal(false)}>
-          <div className="relative m-auto w-full max-w-sm overflow-hidden rounded-[2.35rem] p-6 sm:p-7 text-center glass-panel anim-slide-up border border-[#ffd98a]/30 bg-[linear-gradient(145deg,rgba(28,19,5,0.9),rgba(0,0,0,0.85))] shadow-[0_40px_100px_rgba(255,217,138,0.25)] max-h-[82dvh] overflow-y-auto scrollbar-hide" onClick={(e) => e.stopPropagation()}>
+       <div className="fixed inset-0 z-[600] grid min-h-[100dvh] place-items-center overflow-y-auto bg-black/70 px-4 py-8 backdrop-blur-2xl sm:p-6" onClick={() => setShowUpgradeModal(false)}>
+          <div className="relative w-full max-w-[22rem] sm:max-w-sm overflow-hidden rounded-[2.35rem] p-6 sm:p-7 text-center glass-panel anim-slide-up border border-[#ffd98a]/30 bg-[linear-gradient(145deg,rgba(28,19,5,0.9),rgba(0,0,0,0.85))] shadow-[0_40px_100px_rgba(255,217,138,0.25)] max-h-[82dvh] overflow-y-auto scrollbar-hide" onClick={(e) => e.stopPropagation()}>
             <div className="absolute -left-16 -top-16 h-40 w-40 rounded-full blur-[3rem] opacity-20 bg-[#ffd98a] pointer-events-none" />
             <div className="absolute -bottom-16 -right-16 h-40 w-40 rounded-full blur-[3rem] opacity-20 bg-[#ffd98a] pointer-events-none" />
 
@@ -1148,8 +1148,8 @@ export default function App() {
       )}
 
       {showProfileModal && (
-        <div className="fixed inset-0 z-[500] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-2xl transition-all" onClick={() => { if (!isAuthenticatingKey) setShowProfileModal(false); }}>
-          <div className={`relative m-auto w-full max-w-sm overflow-hidden rounded-[2.35rem] p-6 sm:p-7 text-centerclassName="fixed inset-0 z-[500] flex items-start justify-center overflow-y-auto px-4 py-6 sm:items-center sm:p-6 bg-black/60 backdrop-blur-2xl transition-all" glass-panel anim-pop-in max-h-[calc(100dvh-3rem)] overflow-y-auto scrollbar-hide shadow-[0_40px_100px_rgba(0,0,0,0.6)] ${theme.glow}`} onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[500] grid min-h-[100dvh] place-items-center overflow-y-auto bg-black/60 px-4 py-8 backdrop-blur-2xl transition-all sm:p-6" onClick={() => { if (!isAuthenticatingKey) setShowProfileModal(false); }}>
+          <div className={`relative w-full max-w-[22rem] sm:max-w-sm overflow-hidden rounded-[2.35rem] p-6 sm:p-7 text-centerclassName="fixed inset-0 z-[500] flex items-start justify-center overflow-y-auto px-4 py-6 sm:items-center sm:p-6 bg-black/60 backdrop-blur-2xl transition-all" glass-panel anim-pop-in max-h-[calc(100dvh-3rem)] overflow-y-auto scrollbar-hide shadow-[0_40px_100px_rgba(0,0,0,0.6)] ${theme.glow}`} onClick={(e) => e.stopPropagation()}>
             <button onClick={() => setShowProfileModal(false)} className="absolute right-5 top-5 grid h-10 w-10 place-items-center rounded-full bg-white/[0.08] text-white/45 transition hover:bg-white/[0.13] hover:text-white"><X size={18} /></button>
             <div className={`absolute -left-16 -top-16 h-40 w-40 rounded-full blur-[3rem] opacity-30 pointer-events-none ${isUltra ? "bg-[#ffd98a]" : "bg-white"}`} />
             <div className={`absolute -bottom-16 -right-16 h-40 w-40 rounded-full blur-[3rem] opacity-20 pointer-events-none ${isUltra ? "bg-[#ffd98a]" : "bg-white"}`} />
@@ -1264,7 +1264,7 @@ export default function App() {
           </div>
         </header>
 
-        <main className="z-10 flex flex-1 flex-col overflow-y-auto px-4 pb-28 sm:px-6 sm:pb-32 lg:px-10 xl:px-14 xl:pb-36 scrollbar-hide">
+        <main className="z-10 flex flex-1 flex-col overflow-y-auto px-4 pb-40 sm:px-6 sm:pb-40 lg:px-10 xl:px-14 xl:pb-40 scrollbar-hide">
           <div key={activeTab} className="anim-pop-in flex flex-1 flex-col h-full min-h-0">
             {activeTab === "home" && (
               <div className="mx-auto w-full max-w-[1400px] space-y-5 md:space-y-7 h-full">
@@ -1548,7 +1548,7 @@ export default function App() {
     </div>
   </main>
 
-        <nav className="fixed bottom-3 left-1/2 z-50 flex h-[4.25rem] w-[94%] max-w-[24rem] -translate-x-1/2 items-center justify-evenly gap-1 rounded-[2rem] border border-white/[0.15] bg-[#09090e]/90 p-1.5 shadow-[0_24px_70px_rgba(0,0,0,.55)] backdrop-blur-3xl sm:bottom-5 sm:h-[4.6rem] sm:max-w-md lg:bottom-6 lg:max-w-2xl lg:rounded-[2.35rem] lg:px-4 xl:max-w-3xl">
+        <nav className="fixed bottom-7 left-1/2 z-50 flex h-[4.15rem] w-[92%] max-w-[23rem] -translate-x-1/2 items-center justify-evenly gap-1 rounded-[2rem] border border-white/[0.15] bg-[#09090e]/90 p-1.5 shadow-[0_24px_70px_rgba(0,0,0,.55)] backdrop-blur-3xl sm:bottom-8 sm:h-[4.5rem] sm:max-w-md lg:bottom-8 lg:max-w-2xl lg:rounded-[2.35rem] lg:px-4 xl:max-w-3xl">
           {[{ id: "home", label: "Home", icon: LayoutGrid }, { id: "services", label: "Plan", icon: CreditCard }, { id: "assist", label: "Assist", icon: MessageSquare }, { id: "nearby", label: "Nearby", icon: MapPin }, { id: "activity", label: "Log", icon: ActivityIcon }].map((item) => { 
             const active = activeTab === item.id; 
             
