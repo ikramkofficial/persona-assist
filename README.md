@@ -118,3 +118,9 @@ This project is designed as a premium concierge dashboard with a modern iOS-styl
 const PLAN_PRICE = 72999;
 const INITIAL_BALANCE = 500000;
 const ULTRA_PRICE = 150000;
+
+## License
+
+© 2026 Ikram Asghar. All rights reserved.
+
+This project is shared for portfolio and demonstration purposes only. Unauthorized copying, modification, redistribution, or commercial use is not permitted.
