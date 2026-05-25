@@ -4,7 +4,7 @@ Persona Persist is a luxury concierge web application built with React, TypeScri
 
 ## Live Demo
 
-https://ikramkofficial.github.io/persona-assit/
+https://ikramkofficial.github.io/persona-assist/
 
 ## Project Overview
 
